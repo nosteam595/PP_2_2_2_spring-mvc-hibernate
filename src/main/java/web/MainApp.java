@@ -18,17 +18,17 @@ public class MainApp {
         userService.addUser(user1);
         userService.addUser(user2);
         userService.addUser(user3);
-//
-//        System.out.println(userService.allUsers());
-//
-//        userService.removeUser(user1);
-//
-//        System.out.println(userService.allUsers());
-//
-//        User user4 = new User("Егор", "Петров", "petrov@bk.ru", 30);
-//        userService.updateUser(3, user4);
-//
-//        System.out.println(userService.allUsers());
+
+        System.out.println(userService.allUsers());
+
+        userService.removeUser(user1);
+
+        System.out.println(userService.allUsers());
+
+        User user4 = new User("Егор", "Петров", "petrov@bk.ru", 30);
+        userService.updateUser(3, user4);
+
+        System.out.println(userService.allUsers());
 
     }
 }

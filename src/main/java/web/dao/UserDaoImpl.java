@@ -34,7 +34,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public void updateUser(int id, User userToUpdate) {
+    public void updateUser(long id, User userToUpdate) {
         User userForUpdate = sessionFactory.getCurrentSession().get(User.class, id);
         userForUpdate.setFirstName(userToUpdate.getFirstName());
         userForUpdate.setLastName(userToUpdate.getLastName());
