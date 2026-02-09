@@ -15,7 +15,6 @@ public class UserDaoImpl implements UserDao {
     @Autowired
     private SessionFactory sessionFactory;
 
-    @Transactional
     @Override
     @SuppressWarnings("unchecked")
     public List<User> allUsers() {
@@ -23,26 +22,23 @@ public class UserDaoImpl implements UserDao {
         return allUsers.getResultList();
     }
 
-    @Transactional
     @Override
     public void addUser(User user) {
         sessionFactory.getCurrentSession().save(user);
 
     }
 
-    @Transactional
     @Override
     public void removeUser(User user) {
         sessionFactory.getCurrentSession().remove(user);
     }
 
-    @Transactional
     @Override
-    public void updateUser(User user) {
-        User userUpdate = sessionFactory.getCurrentSession().get(User.class, user.getId());
-        userUpdate.setFirstName(user.getFirstName());
-        userUpdate.setLastName(user.getLastName());
-        userUpdate.setEmail(user.getEmail());
-        userUpdate.setAge(user.getAge());
+    public void updateUser(int id, User userToUpdate) {
+        User userForUpdate = sessionFactory.getCurrentSession().get(User.class, id);
+        userForUpdate.setFirstName(userToUpdate.getFirstName());
+        userForUpdate.setLastName(userToUpdate.getLastName());
+        userForUpdate.setEmail(userToUpdate.getEmail());
+        userForUpdate.setAge(userToUpdate.getAge());
     }
 }
