@@ -28,7 +28,7 @@ public class AppInit extends AbstractAnnotationConfigDispatcherServletInitialize
         return new String[]{"/"};
     }
 
-    //Нормальное отображение кириллице при добавлении в БД
+    //Нормальное отображение кириллицы при добавлении в БД
     protected Filter[] getServletFilters() {
         CharacterEncodingFilter characterEncodingFilter = new CharacterEncodingFilter();
         characterEncodingFilter.setEncoding("UTF-8");

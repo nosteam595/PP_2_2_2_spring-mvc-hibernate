@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Добавить пользователя</title>
+    <title>Добавление пользователя</title>
 </head>
 <body>
-<h2>Создание нового пользователя</h2>
+<h2>Добавление пользователя</h2>
 
 <form th:action="@{/users/save}" th:object="${user}" method="POST">
     <div>
@@ -31,6 +31,8 @@
     <button type="submit">Сохранить пользователя</button>
 </form>
 
-<a th:href="@{/users}">Назад к списку</a>
+<a th:href="@{/users}"
+   th:style="'display: inline-block; margin-top: 20px;'">
+    Назад к списку</a>
 </body>
 </html>
