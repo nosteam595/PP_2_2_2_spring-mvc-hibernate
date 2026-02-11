@@ -23,6 +23,11 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public User getUser(long id) {
+        return sessionFactory.getCurrentSession().get(User.class, id);
+    }
+
+    @Override
     public void addUser(User user) {
         sessionFactory.getCurrentSession().save(user);
 

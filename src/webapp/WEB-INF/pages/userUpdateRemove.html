@@ -2,10 +2,10 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Добавление пользователя</title>
+    <title>Редактирование пользователя</title>
 </head>
 <body>
-<h2>Добавление пользователя</h2>
+<h2>Редактирование пользователя</h2>
 
 <form th:action="@{/users/save}" th:object="${user}" method="POST">
     <div>
@@ -28,7 +28,7 @@
         <input type="number" th:field="*{age}" min="0" required />
     </div>
     <br/>
-    <button type="submit">Сохранить пользователя</button>
+    <button type="submit">Обновить пользователя</button>
 </form>
 
 <a th:href="@{/users}">Назад к списку</a>

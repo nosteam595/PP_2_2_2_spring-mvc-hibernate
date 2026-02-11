@@ -22,6 +22,12 @@ public class UserController {
         return "users";
     }
 
+    @GetMapping("/user/details")
+    public String getUser(@RequestParam long id, ModelMap model) {
+        model.addAttribute("user", userService.getUser(id));
+        return "userUpdateRemove";
+    }
+
     @GetMapping("/add")
     public String addNewUser(ModelMap modelMap) {
         modelMap.addAttribute("user", new User());
@@ -31,6 +37,18 @@ public class UserController {
     @PostMapping("/save")
     public String saveUser(@ModelAttribute("user") User user) {
         userService.addUser(user);
+        return "redirect:/users";
+    }
+
+    @PostMapping("/remove")
+    public String removeUser(@ModelAttribute("user") User user) {
+        userService.removeUser(user);
+        return "redirect:/users";
+    }
+
+    @PostMapping("/update")
+    public String updateUser(@ModelAttribute("user") long id, User user) {
+        userService.updateUser(id, user);
         return "redirect:/users";
     }
 }
