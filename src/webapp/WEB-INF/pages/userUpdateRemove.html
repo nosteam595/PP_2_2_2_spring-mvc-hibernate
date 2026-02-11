@@ -3,44 +3,106 @@
 <head>
     <meta charset="UTF-8">
     <title>Редактирование пользователя</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 50px;
+            background-color: #f9f9f9;
+        }
+
+        /* Контейнер для выравнивания строк */
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 350px;
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: bold;
+            margin-right: 15px;
+        }
+
+        input {
+            width: 200px;
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        /* Общие стили кнопок */
+        button {
+            width: 350px; /* Ширина совпадает с формой */
+            padding: 10px;
+            cursor: pointer;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .btn-update {
+            background-color: #e9ecef;
+        }
+
+        .btn-remove {
+            background-color: #fff;
+            color: #d9534f;
+            border-color: #d9534f;
+            margin-top: 10px;
+        }
+
+        .btn-remove:hover {
+            background-color: #d9534f;
+            color: white;
+        }
+    </style>
 </head>
 <body>
+
 <h2>Редактирование пользователя</h2>
 
+<!-- Форма обновления -->
 <form th:action="@{/users/update}" th:object="${user}" method="POST">
     <input type="hidden" th:field="*{id}" />
-    <div>
+
+    <div class="form-row">
         <label>Имя:</label>
-        <input type="text" th:field="*{firstName}" placeholder="Введите имя" required />
+        <input type="text" th:field="*{firstName}" required />
     </div>
-    <br/>
-    <div>
+
+    <div class="form-row">
         <label>Фамилия:</label>
-        <input type="text" th:field="*{lastName}" placeholder="Введите фамилию" required />
+        <input type="text" th:field="*{lastName}" required />
     </div>
-    <br/>
-    <div>
+
+    <div class="form-row">
         <label>Email:</label>
-        <input type="email" th:field="*{email}" placeholder="example@mail.com" required />
+        <input type="email" th:field="*{email}" required />
     </div>
-    <br/>
-    <div>
+
+    <div class="form-row">
         <label>Возраст:</label>
         <input type="number" th:field="*{age}" min="0" required />
     </div>
-    <br/>
-    <button type="submit">Обновить пользователя</button>
+
+    <button type="submit" class="btn-update">Обновить пользователя</button>
 </form>
 
-
+<!-- Отдельная форма удаления -->
 <form th:action="@{/users/remove}" th:object="${user}" method="POST">
     <input type="hidden" th:field="*{id}" />
-    <br/>
-    <button type="submit">Удалить пользователя</button>
+    <button type="submit" class="btn-remove" onclick="return confirm('Удалить этого пользователя?')">
+        Удалить пользователя
+    </button>
 </form>
 
-<a th:href="@{/users}"
-   th:style="'display: inline-block; margin-top: 20px;'">
-    Назад к списку</a>
+<a th:href="@{/users}" style="margin-top: 25px; text-decoration: none; color: #007bff;">
+    ← Назад к списку
+</a>
+
 </body>
 </html>

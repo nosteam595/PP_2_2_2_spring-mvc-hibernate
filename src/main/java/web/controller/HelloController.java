@@ -15,7 +15,7 @@ public class HelloController {
 	public String printWelcome(ModelMap model) {
 		List<String> messages = new ArrayList<>();
 		messages.add("Задача по Spring+MVC+Hibernate");
-		messages.add("Версия ПО 5.2.0 sep'19 ");
+		messages.add("Версия ПО 5.2.0 сентябрь'19 ");
 		model.addAttribute("messages", messages);
 		return "index";
 	}
